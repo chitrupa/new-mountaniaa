@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette - consistent across site */
+            --primary-dark: #2C3E50;
+            --secondary-light: #ECF0F1;
+            --accent-green: #27AE60;
+            --background-light: #F8F8F8;
+            --hover-color: #E74C3C;
+            --text-dark-primary: #34495E;
+            --text-light-secondary: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (consistent across site) */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* Hero Section for Gallery Page */
+        .gallery-hero {
+            /* UPDATED BACKGROUND IMAGE */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0O38c29t_3OIfWfBRVFUa5wt3HchuvBUi2g&s') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 40vh; /* Slightly smaller hero for less text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .gallery-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section Styling */
+        .gallery-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--background-light);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+            gap: 30px; /* Space between gallery items */
+            max-width: 1200px;
+            margin: 0 auto; /* Center the grid */
+        }
+
+        .gallery-item {
+            background-color: var(--secondary-light);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden; /* Ensures image corners respect border-radius */
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px; /* Fixed height for consistent grid appearance */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            display: block;
+            transition: transform 0.3s ease; /* Smooth hover effect for image */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05); /* Slightly zoom on hover */
+        }
+
+        /* The caption div is still present for structure, but with no content */
+        .gallery-item-caption {
+            padding: 0; /* Remove padding */
+            text-align: left;
+            font-size: 0; /* Make font size 0 to effectively hide it visually */
+            height: 0; /* Collapse height */
+            overflow: hidden; /* Ensure no overflow if any default content */
+        }
+
+        /* Footer (consistent across site) */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* Floating Book Now Button (consistent across site) */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52;
+        }
+
+        /* Booking Modal Styles (consistent across site) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects (consistent across site) */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .gallery-hero h2 {
+                font-size: 2.5rem;
+            }
+            .gallery-hero p {
+                font-size: 1rem;
+            }
+            .gallery-section h2 {
+                font-size: 2.2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                transform: none;
+                width: auto;
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="gallery-hero scroll-fade-in">
+            <h2>GALLERY</h2>
+            <p>Explore the beauty and tranquility of New Mountania Resort through our captivating image gallery. From lush landscapes to cozy interiors, get a glimpse of your next unforgettable getaway.</p>
+        </section>
+
+        <section class="gallery-section scroll-fade-in">
+            <h2>Our Beautiful Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall1thumb.gif" alt="Resort view 1">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall2thumb.gif" alt="Resort view 2">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/mmm.jpg" alt="Resort view 3">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall4thumb.gif" alt="Resort view 4">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall5thumb.gif" alt="Resort view 5">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall6thumb.gif" alt="Resort view 6">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall7thumb.gif" alt="Resort view 7">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall8thumb.gif" alt="Resort view 8">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall9thumb.gif" alt="Resort view 9">
+                    <div class="gallery-item-caption"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.newmountania.com/assets/images/gall10thumb.gif" alt="Resort view 10">
+                    <div class="gallery-item-caption"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission
+        const bookingForm = bookingModal.querySelector('form');
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('numGuests').value;
+            const roomType = document.getElementById('roomType').value;
+
+            alert(`Booking Inquiry Submitted!\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nRoom Type: ${roomType || 'Any'}\n\n(In a real application, this data would be sent to a server.)`);
+
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

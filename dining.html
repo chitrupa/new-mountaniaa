@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - Dining</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette - consistent with index.html */
+            --primary-dark: #2C3E50; /* Deep Slate Blue - for header, strong accents */
+            --secondary-light: #ECF0F1; /* Light Grey - for subtle backgrounds, card backgrounds */
+            --accent-green: #27AE60; /* Medium Emerald Green - for checkmarks, highlights */
+            --background-light: #F8F8F8; /* Soft Off-White - for main page background */
+            --hover-color: #E74C3C; /* Muted Red-Orange - for button hovers, alerts */
+            --text-dark-primary: #34495E; /* Dark Blue-Grey - for primary text */
+            --text-light-secondary: #7F8C8D; /* Muted Grey - for secondary text, descriptions */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (consistent with index.html) */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* Hero Section for Dining Page */
+        .dining-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://w0.peakpx.com/wallpaper/882/238/HD-wallpaper-prosi-south-north-indian-restaurant-in-vienna-restaurant-reviews-menu-and-prices-north-indian-food.jpg') no-repeat center center/cover; /* UPDATED IMAGE HERE */
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dining-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .dining-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Section Styling */
+        .menu-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--background-light);
+        }
+
+        .menu-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+            gap: 30px; /* Space between menu items */
+            max-width: 1200px;
+            margin: 0 auto; /* Center the grid */
+        }
+
+        .menu-item {
+            background-color: var(--secondary-light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left; /* Align text within each menu item */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Styling for menu item images */
+        .menu-item-img {
+            width: 100%; /* Make image fill the width of its container */
+            height: 180px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 8px; /* Slightly rounded corners for images */
+            margin-bottom: 15px; /* Space between image and text */
+            display: block; /* Ensure it behaves as a block element */
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed rgba(0,0,0,0.2); /* Subtle separator */
+            padding-bottom: 8px;
+        }
+
+        .menu-item p {
+            font-size: 1rem;
+            color: var(--text-dark-primary);
+            line-height: 1.6;
+        }
+
+        /* Concluding Message Section */
+        .conclusion-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            background-color: var(--secondary-light);
+            color: var(--text-dark-primary);
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .conclusion-section p {
+            margin-bottom: 1rem;
+        }
+
+        .conclusion-section .note {
+            font-style: italic;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-top: 1.5rem;
+        }
+
+        /* Footer (consistent with index.html) */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* Floating Book Now Button (consistent with index.html) */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52;
+        }
+
+        /* Booking Modal Styles (consistent with index.html) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects (consistent with index.html) */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .dining-hero h2 {
+                font-size: 2.5rem;
+            }
+            .dining-hero p {
+                font-size: 1rem;
+            }
+            .menu-section h2 {
+                font-size: 2.2rem;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .menu-item {
+                text-align: center; /* Center text within item on small screens */
+            }
+            .conclusion-section {
+                font-size: 1rem;
+                padding: 2rem 1rem;
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                transform: none;
+                width: auto;
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="dining-hero scroll-fade-in">
+            <h2>RESTAURANT</h2>
+            <p>Welcome to New Mountania Resorts! Our cooks prepare delicious dishes which will pamper your taste buds and leave you wanting for more. There are comfortable dining areas where you can look at our extensive menu.</p>
+            <p>Cooks will get your orders, which are visually appealing and completely appetizing. At New Mountania we create a great dining experience with environmental friendly foods. We strive to make the dining fun and exciting. Our cuisines are influenced by the flavours and styles of many cultures. We are a motivated team of health-conscious, community-minded individuals. We are committed to the highest standards of food quality and customer service.</p>
+        </section>
+
+        <section class="menu-section scroll-fade-in">
+            <h2>MENU</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/SOUTH-INDIAN-IDLY-WADA-CAMBO-300x224.png" alt="Image of Idli" class="menu-item-img">
+                    <h3>Idli</h3>
+                    <p>Idli are a type of savoury rice cake, popular as breakfast foods in southern India and northern Sri Lanka.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/poori.jpg" alt="Image of Poori" class="menu-item-img">
+                    <h3>Poori</h3>
+                    <p>Poori is an unleavened deep-fried bread. It is eaten for breakfast or as a snack or light meal.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/dosa_radisoon_blu.jpg" alt="Image of Masala Dosa" class="menu-item-img">
+                    <h3>Masala Dosa</h3>
+                    <p>Dosa is a thin crispy crepe made using fermented rice and lentil batter. It is one that has spiced and seasoned potatoes stuffed in it.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/skewer.png" alt="Image of Skewer" class="menu-item-img">
+                    <h3>Skewer</h3>
+                    <p>Skewers are used while grilling or roasting meats and fish, and in other culinary applications.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/chicken-rice-bowl.jpg" alt="Image of Rice Bowl" class="menu-item-img">
+                    <h3>Rice Bowl</h3>
+                    <p>It consists of fish, meat, vegetables or other ingredients simmered together and served over rice.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/biryani.png" alt="Image of Biryani" class="menu-item-img">
+                    <h3>Biryani</h3>
+                    <p>Long-grained rice flavored with exotic spices, such as saffron, is layered with lamb, chicken, fish, or vegetables, and a thick gravy.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/recipe_inside_DAL.png" alt="Image of Dhal Makhani" class="menu-item-img">
+                    <h3>Dhal Makhani</h3>
+                    <p>A punjabi staple dish, Dal Makhani is the absolute favorite recipe that can easily be cooked to perfection.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://www.newmountania.com/assets/images/Dishes/dhal.png" alt="Image of Dhal Tadka" class="menu-item-img">
+                    <h3>Dhal Tadka</h3>
+                    <p>A mix of moong dal and arhar dal, this is a flavourful lentil preparation from Punjab.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion-section scroll-fade-in">
+            <p>We care about our guests' experience and our crews' development. At Mountania, we are dedicated to taking the extra steps at every level to be the best we can be! We provide a family-friendly, laid-back atmosphere where you can enjoy a wide variety of the very best meals.</p>
+            <p class="note">*Groups can ask for specific food.</p>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission
+        const bookingForm = bookingModal.querySelector('form');
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('numGuests').value;
+            const roomType = document.getElementById('roomType').value;
+
+            alert(`Booking Inquiry Submitted!\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nRoom Type: ${roomType || 'Any'}\n\n(In a real application, this data would be sent to a server.)`);
+
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

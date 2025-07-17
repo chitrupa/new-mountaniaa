@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites - New Mountania Resort</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette */
+            --primary-dark: #2C3E50; /* Deep Slate Blue - for header, strong accents */
+            --secondary-light: #ECF0F1; /* Light Grey - for subtle backgrounds, card backgrounds */
+            --accent-green: #27AE60; /* Medium Emerald Green - for checkmarks, highlights */
+            --background-light: #F8F8F8; /* Soft Off-White - for main page background */
+            --hover-color: #E74C3C; /* Muted Red-Orange - for button hovers, alerts */
+            --text-dark-primary: #34495E; /* Dark Blue-Grey - for primary text */
+            --text-light-secondary: #7F8C8D; /* Muted Grey - for secondary text, descriptions */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light); /* Main page background */
+            color: var(--text-dark-primary); /* Primary text color */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--primary-dark); /* Dark header */
+            color: var(--secondary-light); /* Light text on dark header */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light); /* Light text on dark nav */
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth transition for hover */
+        }
+
+        nav a:hover {
+            color: var(--hover-color); /* Highlight on hover */
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .rooms-intro {
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rooms-intro h2 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--primary-dark); /* Dark heading color */
+        }
+
+        .rooms-intro p {
+            color: var(--text-light-secondary); /* Lighter text for descriptions */
+        }
+
+        .room-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .room-card {
+            background-color: var(--secondary-light); /* Light card background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover */
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allows info to expand, pushing button to bottom */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark-primary); /* Dark heading color */
+        }
+
+        .room-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--text-dark-primary); /* Text color */
+            flex-grow: 1;
+        }
+
+        .room-info ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .room-info ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark-primary); /* Text color */
+        }
+
+        .room-info ul li::before {
+            content: '✓ '; /* Checkmark icon */
+            color: var(--accent-green); /* Green checkmark */
+            font-weight: bold;
+        }
+
+        .room-card .button {
+            display: inline-block;
+            background-color: var(--primary-dark); /* Dark button */
+            color: var(--secondary-light); /* Light text on button */
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease; /* Smooth transition for hover */
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
+
+        .room-card .button:hover {
+            background-color: var(--hover-color); /* Hover effect */
+        }
+
+        footer {
+            background-color: var(--primary-dark); /* Dark footer */
+            color: var(--secondary-light); /* Light text on footer */
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .rooms-intro h2 {
+                font-size: 2rem;
+            }
+            .room-types {
+                grid-template-columns: 1fr;
+            }
+            .room-info h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="rooms-intro">
+            <h2>Our Exquisite Rooms & Suites</h2>
+            <p>Step into comfort and elegance. Each of our accommodations is meticulously designed to provide a serene retreat, blending modern luxury with the natural beauty of Masinagudi. Explore our diverse range of rooms and find your perfect sanctuary.</p>
+        </section>
+
+        <section class="room-types">
+            <div class="room-card">
+                <img src="https://www.newmountania.com/assets/images/gall1.gif" alt="Deluxe Garden View Room Interior with Greenery">
+                <div class="room-info">
+                    <h3>Deluxe Garden View</h3>
+                    <p>Experience tranquility with lush garden views from your private balcony. Perfect for couples seeking a peaceful and comfortable stay.</p>
+                    <ul>
+                        <li>Spacious 350 sq ft</li>
+                        <li>King-size bed</li>
+                        <li>Private balcony</li>
+                        <li>Modern en-suite bathroom</li>
+                        <li>Complimentary Wi-Fi</li>
+                    </ul>
+                    <a href="#" class="button">View Details & Book</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://www.newmountania.com/assets/images/gall2.gif" alt="Premium Mountain View Room with scenic window">
+                <div class="room-info">
+                    <h3>Premium Mountain View</h3>
+                    <p>Wake up to breathtaking panoramic views of the Western Ghats. Our Premium rooms offer elevated comfort and stunning vistas.</p>
+                    <ul>
+                        <li>400 sq ft of luxury</li>
+                        <li>Choice of King or Twin beds</li>
+                        <li>Expansive private terrace</li>
+                        <li>Rain shower and premium toiletries</li>
+                        <li>Complimentary Wi-Fi & minibar</li>
+                    </ul>
+                    <a href="#" class="button">View Details & Book</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://www.newmountania.com/assets/images/gall10.gif" alt="Luxurious Family Suite Interior with multiple beds">
+                <div class="room-info">
+                    <h3>Family Suite</h3>
+                    <p>Designed for comfort and space, our Family Suites provide ample room for everyone to relax and enjoy their holiday together.</p>
+                    <ul>
+                        <li>Two interconnected rooms</li>
+                        <li>King bed + Twin beds option</li>
+                        <li>Separate living area</li>
+                        <li>Accommodates up to 4 guests</li>
+                        <li>Kids' amenities on request</li>
+                    </ul>
+                    <a href="#" class="button">View Details & Book</a>
+                </div>
+            </div>
+
+            </section>
+    </main>
+
+    <footer>
+        Contact us: +91-9986169988 | +91-9943216337 | newmountaniaresort@gmail.com
+    </footer>
+</body>
+</html>

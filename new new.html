@@ -1,0 +1,205 @@
+
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Mountania Resort</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #4169E1;
+      --light-blue: #B0E0E6;
+      --mint: #98FF98;
+      --cream: #FFFDD0;
+      --terracotta: #E2725B;
+      --text-dark: #2F4F4F;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--blue);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      /* Updated background URL */
+      background: url('https://images.unsplash.com/photo-1529921879218-f9917d1eea9b?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8Y29uY3JldGUlMjByb2FkJTIwYmV0d2VlbiUyMG1vdW50YWlucyUyMEt0NWZSTUVudW90SXxlbnwwfHx8fDE3MjExODc1MDV8MA&ixlib=rb-4.0.3&q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .booking-widget {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .booking-widget input, .booking-widget button {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+    }
+
+    .booking-widget button {
+      background-color: var(--blue);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .booking-widget button:hover {
+      background-color: var(--terracotta);
+    }
+
+    .intro, .highlights {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .intro p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.2rem;
+    }
+
+    .highlights h3 {
+      margin-bottom: 1rem;
+    }
+
+    .highlight-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .highlight-links a {
+      background-color: var(--mint);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--text-dark);
+      transition: background 0.3s;
+    }
+
+    .highlight-links a:hover {
+      background-color: var(--terracotta);
+      color: white;
+    }
+
+    footer {
+      background-color: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .booking-widget {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>New Mountania</h1>
+    <nav>
+      <a href="rooms.html">Rooms</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="dining.html">Dining</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="offers.html">Offers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Your Oasis Awaits</h2>
+    <div class="booking-widget">
+      <input type="date" placeholder="Check-in" />
+      <input type="date" placeholder="Check-out" />
+      <input type="number" placeholder="Adults" min="1" />
+      <input type="number" placeholder="Children" min="0" />
+      <button>Check Availability</button>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h3>Welcome to New Mountania Resort</h3>
+    <p>
+      Nestled amidst the serene landscapes of Masinagudi, Tamil Nadu, New Mountania offers an unparalleled escape into nature’s luxury. Whether you're seeking tranquility or adventure, our resort is your perfect hideaway.
+    </p>
+  </section>
+
+  <section class="highlights">
+    <h3>Explore New Mountania</h3>
+    <div class="highlight-links">
+      <a href="rooms.html">Explore Our Rooms</a>
+      <a href="spa.html">Indulge in Our Spa</a>
+      <a href="dining.html">Discover Our Dining</a>
+      <a href="offers.html">View Special Offers</a>
+    </div>
+  </section>
+
+  <footer>
+    Contact us: +91-9986169988 | +91-9943216337 | newmountaniaresort@gmail.com
+  </footer>
+</body>
+</html>
+

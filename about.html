@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette - consistent across site */
+            --primary-dark: #2C3E50;
+            --secondary-light: #ECF0F1;
+            --accent-green: #27AE60;
+            --background-light: #F8F8F8;
+            --hover-color: #E74C3C;
+            --text-dark-primary: #34495E;
+            --text-light-secondary: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (consistent across site) */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* Hero Section for About Us Page - Changed to solid color background */
+        .about-hero {
+            background-color: var(--primary-dark); /* Solid color background */
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: var(--secondary-light); /* Lighter background for content */
+            border-bottom: 1px solid #ddd; /* Separator */
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .content-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark-primary);
+        }
+
+        /* Styling for Image Placeholders within content */
+        .content-image-container {
+            text-align: center;
+            margin: 3rem auto; /* Add margin above and below images */
+            max-width: 800px; /* Constrain width of images */
+        }
+
+        .content-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: block; /* Ensure no extra space below image */
+            margin: 0 auto; /* Center image if it's smaller than max-width */
+        }
+
+        /* Footer (consistent across site) */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* Floating Book Now Button (consistent across site) */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52;
+        }
+
+        /* Booking Modal Styles (consistent across site) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects (consistent across site) */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .about-hero h2 {
+                font-size: 2.5rem;
+            }
+            .about-hero p {
+                font-size: 1rem;
+            }
+            .content-section h3 {
+                font-size: 1.8rem;
+            }
+            .content-section p {
+                font-size: 1rem;
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                transform: none;
+                width: auto;
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="about-hero scroll-fade-in">
+            <h2>ABOUT US</h2>
+            <p>Discover the essence of New Mountania Resort, a sanctuary nestled amidst nature's grandeur, offering unparalleled views and a truly immersive experience.</p>
+        </section>
+
+        <section class="content-section scroll-fade-in">
+            <h3>Welcome to New Mountania Resort</h3>
+            <p>New Mountania Resort, Masinagudi offers a panoramic breathtaking view of the magnificent surroundings. The Resort is located in a commanding position in the heart of Masinagudi. Our resort covers an area of 6.5 acres. Look out of your bedroom and you'll be presented with a perpetually changing view of the environment. One moment it's misty, the other it's shrouded in shadows. Then when you least expect it, it's jaw-droppingly spectacular. While soaking in the view is an activity in itself, you'll see that the list of things to do is limited only by the time you have. It isn't uncommon to hear the calls of animals and the trumpeting of elephants as they pass by the resort.</p>
+            <p>The resort is blessed with the masterpiece of Nature, where each flower is a soul blossoming out to pleasant ambience. New Mountania Resort consists of aesthetically appointed cottages with modern facilities, kids play area, outdoor and indoor games. The specialty of New Mountania Resorts is that it caters vegetarian and non-vegetarian delicacies of various types. The ambience is just right for a relaxed and an adventurous holiday.</p>
+            <p>A few facilities provided by the resort include restaurant, pick up facility and recreational activities. Residents are offered safe and reliable pick up facility for convenient commute. For a culinary feast, one can relish a wide variety of vegetarian and non-vegetarian cuisines prepared by the cook with finesse. These cuisines are visually appetizing and offer a burst of delicious flavour. Tourists can also indulge into an interesting array of recreational activities like safari, trekking, kids play area, indoor and outdoor games.</p>
+
+            <div class="content-image-container scroll-fade-in">
+                <img src="https://www.newmountania.com/assets/images/AboutUs/picture7.gif" alt="Resort View Placeholder">
+            </div>
+        </section>
+
+        <section class="content-section scroll-fade-in" style="background-color: var(--background-light);">
+            <h3>About Masinagudi</h3>
+            <p>Masinagudi is an exotic locale situated a few kilometers before Ooty, on the Karnataka - Tamil Nadu Border. Masinagudi is a beautiful place on the foothills of Nilgiris just after the Bandipur Wildlife Sanctuary in Karnataka.</p>
+            <p>The place is lush green, peaceful and adventurous at the same time with a lot of trekking and hiking options available for one and all.</p>
+            <p>Masinagudi is at a distance of 250 Km from Bangalore. The road leading to Masinagudi is beautiful with lot of sunflower fields on both the sides. Enjoy a peaceful relaxing vacation with beautiful wildlife and sightseeing.</p>
+            <p>It is a fascinating tourist destination. This is one of the most beautiful places in India. Masinagudi is at the heart of the Mudumalai forest reserve. It offers spectacular views and temperatures between 14 to 23 degree celcius.</p>
+
+            <div class="content-image-container scroll-fade-in">
+                <img src="https://www.newmountania.com/assets/images/AboutUs/masinagudi.jpg" alt="Masinagudi Landscape Placeholder">
+            </div>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission
+        const bookingForm = bookingModal.querySelector('form');
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('numGuests').value;
+            const roomType = document.getElementById('roomType').value;
+
+            alert(`Booking Inquiry Submitted!\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nRoom Type: ${roomType || 'Any'}\n\n(In a real application, this data would be sent to a server.)`);
+
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

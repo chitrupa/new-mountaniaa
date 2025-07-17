@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette */
+            --primary-dark: #2C3E50; /* Deep Slate Blue - for header, strong accents */
+            --secondary-light: #ECF0F1; /* Light Grey - for subtle backgrounds, card backgrounds */
+            --accent-green: #27AE60; /* Medium Emerald Green - for checkmarks, highlights */
+            --background-light: #F8F8F8; /* Soft Off-White - for main page background */
+            --hover-color: #E74C3C; /* Muted Red-Orange - for button hovers, alerts */
+            --text-dark-primary: #34495E; /* Dark Blue-Grey - for primary text */
+            --text-light-secondary: #7F8C8D; /* Muted Grey - for secondary text, descriptions */
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sticky Header */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; /* Make header sticky */
+            top: 0; /* Stick to the top */
+            width: 100%;
+            z-index: 1000; /* Ensure it stays on top of other content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: add shadow for depth */
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://curlytales.com/wp-content/uploads/2024/03/Masinagudi-800x450.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            height: 70vh; /* Make it take up more of the viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Rooms Showcase Section - Simplified for Home Page */
+        .rooms-showcase {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--secondary-light); /* Added a background for this section */
+        }
+
+        .rooms-showcase h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .rooms-showcase p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.6;
+            color: var(--text-dark-primary);
+        }
+
+        .btn-view-rooms {
+            display: inline-block;
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .btn-view-rooms:hover {
+            background-color: var(--hover-color);
+        }
+
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center; /* Default for text within footer */
+            padding: 2rem 1rem; /* Increased padding for better spacing */
+            margin-top: auto;
+            /* line-height: 1.6; This will now be handled by inner elements if needed */
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+            justify-content: space-around; /* Distribute space evenly */
+            align-items: flex-start; /* Align items to the top of their container */
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px; /* Space between sections */
+        }
+
+        .footer-section {
+            flex: 1; /* Allow sections to grow and shrink */
+            min-width: 200px; /* Minimum width before wrapping */
+            max-width: 280px; /* Max width to control size on large screens */
+            padding: 10px;
+            text-align: left; /* Align text within each section */
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light); /* Or a slightly brighter shade if desired */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle separator */
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light); /* Link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+
+        /* Floating Book Now Button */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px; /* Position at bottom */
+            right: 20px;  /* Position at right */
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001; /* Ensure it stays on top of other content */
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52; /* Slightly darker green on hover */
+        }
+
+        /* Booking Modal Styles */
+        .modal-overlay {
+            display: none; /* Corrected: Hidden by default */
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            /* Removed display:flex here so it's truly hidden initially */
+            justify-content: center; /* These will apply when JS sets display to flex */
+            align-items: center;   /* These will apply when JS sets display to flex */
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px); /* Start slightly below its final position */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+            will-change: opacity, transform; /* Optimize for animation performance */
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0); /* Move to its final position */
+        }
+
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .hero {
+                padding: 6rem 1rem;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .rooms-showcase {
+                padding: 3rem 1rem;
+            }
+            .rooms-showcase h2 {
+                font-size: 2rem;
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto; /* Ensure it doesn't try to center */
+                transform: none; /* Remove any centering transforms */
+                width: auto; /* Reset width for mobile */
+                max-width: none; /* Reset max-width */
+            }
+            .modal-content {
+                width: 95%; /* Adjust width for smaller screens */
+                padding: 20px;
+            }
+            .btn-view-rooms {
+                padding: 0.8rem 1.5rem; /* Adjust padding for mobile button */
+                font-size: 1rem;
+            }
+            .footer-content {
+                flex-direction: column; /* Stack columns vertically on small screens */
+                align-items: center; /* Center items when stacked */
+                text-align: center; /* Center text within sections on small screens */
+            }
+            .footer-section {
+                text-align: center; /* Ensure text is centered when stacked */
+                max-width: 90%; /* Allow sections to take more width when stacked */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero scroll-fade-in">
+            <h2>Welcome to New Mountania Resort</h2>
+            <p>Experience an unforgettable escape amidst breathtaking landscapes and unparalleled luxury. Your perfect getaway awaits.</p>
+        </section>
+
+        <section class="rooms-showcase scroll-fade-in">
+            <h2>Our Exquisite Rooms</h2>
+            <p>Discover a range of luxurious and comfortable accommodations designed to make your stay truly exceptional, starting from ₹ 3500/Night. Each room offers unique amenities and stunning views.</p>
+            <a href="rooms.html" class="btn-view-rooms">View All Rooms</a>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex'; // This sets display to flex
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission (e.g., send data to a server or just log it)
+        const bookingForm = bookingModal.querySelector('form');
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('numGuests').value;
+            const roomType = document.getElementById('roomType').value;
+
+            alert(`Booking Inquiry Submitted!\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nRoom Type: ${roomType || 'Any'}\n\n(In a real application, this data would be sent to a server.)`);
+
+            // Optionally close the modal after submission
+            bookingModal.style.display = 'none';
+            bookingForm.reset(); // Clear the form fields
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2, // Trigger when 20% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Start 50px before it hits the bottom of the viewport
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

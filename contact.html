@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette - consistent across site */
+            --primary-dark: #2C3E50;
+            --secondary-light: #ECF0F1;
+            --accent-green: #27AE60;
+            --background-light: #F8F8F8;
+            --hover-color: #E74C3C;
+            --text-dark-primary: #34495E;
+            --text-light-secondary: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (consistent across site) */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Hero Section (similar to About Us, but for Contact) */
+        .contact-hero {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 30vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Contact Section Styling */
+        .contact-section {
+            background-color: var(--secondary-light);
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .contact-info, .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .contact-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            width: 100%; /* Ensure heading takes full width */
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .contact-info strong {
+            color: var(--primary-dark);
+        }
+
+        .contact-info a {
+            color: var(--accent-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        .contact-info iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Form */
+        .contact-form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            padding-top: 1rem;
+        }
+
+        .contact-form-container label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            margin-bottom: -0.5rem;
+            display: block;
+        }
+
+        .contact-form-container input[type="text"],
+        .contact-form-container input[type="email"],
+        .contact-form-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form-container button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form-container button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Footer (consistent across site) */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* Floating Book Now Button (consistent across site) */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52;
+        }
+
+        /* Booking Modal Styles (consistent across site) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects (consistent across site) */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .contact-hero h2 {
+                font-size: 2.5rem;
+            }
+            .contact-hero p {
+                font-size: 1rem;
+            }
+            .contact-section {
+                flex-direction: column;
+                padding: 2rem 1rem;
+            }
+            .contact-info, .contact-form-container {
+                min-width: unset;
+                width: 100%;
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                transform: none;
+                width: auto;
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="contact-hero scroll-fade-in">
+            <h2>GET IN TOUCH</h2>
+            <p>We'd love to hear from you! Contact us for reservations, inquiries, or any special requests.</p>
+        </section>
+
+        <section class="contact-section scroll-fade-in">
+            <h3>Contact Information & Location</h3>
+            <div class="contact-info">
+                <p><strong>Address:</strong><br>New Mountania Resort, Masinagudi main road,<br>Masinagudi, Tamil Nadu - 643223, India.</p>
+                <p><strong>Manager Contact:</strong><br><a href="tel:+919986169988">+91 - 9986169988</a><br><a href="tel:+919943216337">+91 - 9943216337</a></p>
+                <p><strong>Bangalore Office:</strong><br><a href="tel:+918041678960">080-41678960</a><br><a href="tel:+917406903878">+91 - 7406903878</a></p>
+                <p><strong>Email Us:</strong><br><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+
+                <h4>Find Us on Map</h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.5694371426466!2d76.57467667468165!3d11.583093988673734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba2d07524949a2d%3A0xc0fb196a0b73c24b!2sNew%20Mountania%20Resort!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>Send Us a Message</h3>
+                <form action="#" method="POST">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission (for the contact form, you'd typically send to a backend)
+        const contactForm = document.querySelector('.contact-form-container form');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // In a real application, you would send this data to a server using fetch() or XMLHttpRequest
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Thank you, ${name}! Your message has been sent.\nSubject: ${subject}\n\n(In a real application, this data would be processed by a server.)`);
+
+            contactForm.reset(); // Clear the form
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

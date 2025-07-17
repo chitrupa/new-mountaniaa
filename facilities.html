@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities - New Mountania Resort</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette */
+            --primary-dark: #2C3E50; /* Deep Slate Blue - for header, strong accents */
+            --secondary-light: #ECF0F1; /* Light Grey - for subtle backgrounds, card backgrounds */
+            --accent-green: #27AE60; /* Medium Emerald Green - for checkmarks, highlights */
+            --background-light: #F8F8F8; /* Soft Off-White - for main page background */
+            --hover-color: #E74C3C; /* Muted Red-Orange - for button hovers, alerts */
+            --text-dark-primary: #34495E; /* Dark Blue-Grey - for primary text */
+            --text-light-secondary: #7F8C8D; /* Muted Grey - for secondary text, descriptions */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .facilities-intro {
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .facilities-intro h2 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .facilities-intro p {
+            color: var(--text-light-secondary);
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .facility-card {
+            background-color: var(--secondary-light);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .facility-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .facility-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark-primary);
+        }
+
+        .facility-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--text-dark-primary);
+            flex-grow: 1;
+        }
+
+        .facility-info ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .facility-info ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark-primary);
+        }
+
+        .facility-info ul li::before {
+            content: '✓ '; /* Checkmark icon */
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .facilities-intro h2 {
+                font-size: 2rem;
+            }
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+            .facility-info h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="facilities-intro">
+            <h2>Our World-Class Facilities</h2>
+            <p>At New Mountania Resort, we offer a range of amenities and services designed to enhance your stay and ensure every moment is enjoyable. From relaxing by the pool to exhilarating activities, there's something for everyone.</p>
+        </section>
+
+        <section class="facility-grid">
+            <div class="facility-card">
+                <img src="https://www.newmountania.com/assets/images/gall7.gif" alt="Elephants in a natural park setting">
+                <div class="facility-info">
+                    <h3>Elephant Viewing Park</h3>
+                    <p>Experience the majestic beauty of elephants in their natural habitat. Our viewing park offers a unique opportunity for ethical observation and appreciation.</p>
+                    <ul>
+                        <li>Guided viewing tours</li>
+                        <li>Observational blinds</li>
+                        <li>Photography opportunities</li>
+                        <li>Educational insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Restaurant dining area">
+                <div class="facility-info">
+                    <h3>Multi-Cuisine Restaurant</h3>
+                    <p>Savor exquisite flavors at our in-house restaurant, offering a diverse menu from local delicacies to international favorites prepared by expert chefs.</p>
+                    <ul>
+                        <li>Buffet & A-la-carte options</li>
+                        <li>Indoor & outdoor seating</li>
+                        <li>Special dietary requests</li>
+                        <li>Room service available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://www.keralabackwater.com/wp-content/uploads/2016/12/the-zuri-kumarakom-resort-spa-1-1.jpg" alt="Spa and massage room">
+                <div class="facility-info">
+                    <h3>Rejuvenating Spa & Wellness</h3>
+                    <p>Indulge in ultimate relaxation at our serene spa, offering a variety of therapeutic massages and wellness treatments to soothe your mind and body.</p>
+                    <ul>
+                        <li>Ayurvedic treatments</li>
+                        <li>Relaxation therapies</li>
+                        <li>Trained therapists</li>
+                        <li>Prior appointments recommended</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://www.newmountania.com/assets/images/gall4.gif" alt="Conference Room Setup">
+                <div class="facility-info">
+                    <h3>Conference & Event Halls</h3>
+                    <p>Our versatile halls are perfect for corporate meetings, conferences, or private events, equipped with modern amenities to ensure your event's success.</p>
+                    <ul>
+                        <li>State-of-the-art A/V equipment</li>
+                        <li>Customizable layouts</li>
+                        <li>Dedicated event support</li>
+                        <li>Catering services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://www.newmountania.com/assets/images/gall9.gif" alt="Kids Playing Area">
+                <div class="facility-info">
+                    <h3>Kids Play Area</h3>
+                    <p>A safe and engaging space where younger guests can enjoy themselves with various fun activities and games under supervision.</p>
+                    <ul>
+                        <li>Indoor & outdoor play zones</li>
+                        <li>Supervised activities</li>
+                        <li>Age-appropriate games</li>
+                        <li>Child-friendly environment</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        Contact us: +91-9986169988 | +91-9943216337 | newmountaniaresort@gmail.com
+    </footer>
+</body>
+</html>

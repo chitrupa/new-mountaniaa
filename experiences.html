@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mountania Resort - Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Muted & Attractive Color Palette - consistent across site */
+            --primary-dark: #2C3E50;
+            --secondary-light: #ECF0F1;
+            --accent-green: #27AE60;
+            --background-light: #F8F8F8;
+            --hover-color: #E74C3C;
+            --text-dark-primary: #34495E;
+            --text-light-secondary: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (consistent across site) */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: var(--secondary-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--hover-color);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* Hero Section for Experiences Page */
+        .experiences-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover; /* General nature/forest image */
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .experiences-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .experiences-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Activities Section Styling */
+        .activities-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--background-light);
+        }
+
+        .activities-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns */
+            gap: 30px; /* Space between activity items */
+            max-width: 1200px;
+            margin: 0 auto; /* Center the grid */
+        }
+
+        .activity-item {
+            background-color: var(--secondary-light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left; /* Align text within each item */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Styling for activity item images */
+        .activity-item-img {
+            width: 100%; /* Make image fill the width of its container */
+            height: 180px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 8px; /* Slightly rounded corners for images */
+            margin-bottom: 15px; /* Space between image and text */
+            display: block; /* Ensure it behaves as a block element */
+        }
+
+        .activity-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed rgba(0,0,0,0.2); /* Subtle separator */
+            padding-bottom: 8px;
+        }
+
+        .activity-item p {
+            font-size: 1rem;
+            color: var(--text-dark-primary);
+            line-height: 1.6;
+        }
+
+        /* Footer (consistent across site) */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--secondary-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            color: var(--secondary-light);
+        }
+
+        .footer-section a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* Floating Book Now Button (consistent across site) */
+        .book-now-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-float-btn:hover {
+            background-color: #219d52;
+        }
+
+        /* Booking Modal Styles (consistent across site) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: var(--text-dark-primary);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--hover-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            color: var(--text-dark-primary);
+            text-align: left;
+            margin-bottom: -5px;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content input[type="text"],
+        .modal-content button[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #219d52;
+        }
+
+        /* Fade-in/Slide-up on Scroll Effects (consistent across site) */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .experiences-hero h2 {
+                font-size: 2.5rem;
+            }
+            .experiences-hero p {
+                font-size: 1rem;
+            }
+            .activities-section h2 {
+                font-size: 2.2rem;
+            }
+            .activities-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .activity-item {
+                text-align: center; /* Center text within item on small screens */
+            }
+            /* Keep book now button in bottom right for mobile too */
+            .book-now-float-btn {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                transform: none;
+                width: auto;
+                max-width: none;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Mountania</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="dining.html">Dining</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <button class="book-now-float-btn" id="bookNowBtn">Book Now</button>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form>
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="roomType">Preferred Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="e.g., Deluxe, Suite">
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="experiences-hero scroll-fade-in">
+            <h2>ACTIVITIES</h2>
+            <p>Cosseted amidst the Annamalai and Bandipur wildlife sanctuaries, the Madumalai Wildlife Sanctuary is one of the pristine reserved parks in India. Popular for its elephant habitats, this wildlife reserved area also serves as an indigenous home to some of the enchanting wildlife.</p>
+            <p>Offering several adventure and leisure options to the visitors, the lush green, fascinating and rugged trails of Masinagudi are also known for their wilderness! While its location makes it an ideal hotspot for wildlife spotting, its scenic beauty makes it for a serene and blissful holiday destination.</p>
+            <p>Camping in Masinagudi is a one of a kind experience that you need to try with your friends and family. The deep and dense thickets around will keep you engulfed along with the thrills and excitement of a quaint stay in Masinagudi. In case, you are craving for more, trekking through the rugged and challenging terrains will fulfil all your desires. In addition to all these, there are a range of other activities that will make you desire for more and will sure persuade you visit this magical land again.</p>
+        </section>
+
+        <section class="activities-section scroll-fade-in">
+            <h2>Explore Our Experiences</h2>
+            <div class="activities-grid">
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/activities.jpg" alt="Image of people trekking in mountains" class="activity-item-img">
+                    <h3>TREKKING</h3>
+                    <p>Several of the thick mountain forest ranges are waiting for trekkers, along with the streams of river lets from heights of 6000 ft. Share the secrets of the forest, which boasts a wealth of flora and fauna. There is every chance of seeing / encountering wildlife like deer's, elephants, bisons etc... Well maintained paths created over 5000 kms crisscrossing the mountain ranges and moderate uphill walks culminate in the beautiful view. Walking shoes are definitely advisable on this trip.</p>
+                </div>
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/Activities/bird-watching.jpg" alt="Image of a bird on a branch" class="activity-item-img">
+                    <h3>BIRD WATCHING</h3>
+                    <p>The surroundings boasts of thick flora and fauna. This is a place for people who love bird watching with expert guides to help you. The birds are particularly varied and exotic, due to an immediate change in elevation of 3500 feet that provides a variety of climatic conditions, which appeal to over 320 species of birds. The sholas and jungles provide perfect habitat for them all year round. This is one of the renowned places for bird watching in INDIA.</p>
+                </div>
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/Activities/mudumalai-wildlife-sanctuary.jpg" alt="Image of wild animals in a sanctuary" class="activity-item-img">
+                    <h3>WILD LIFE SANCTUARY</h3>
+                    <p>You could also visit a Wildlife Sanctuary called "Mudhumalai" which is a couple of miles away from the town of Masinagudi. Mudumalai wildlife reserve was the first sanctuary in south India. Nature has been lavish in providing this sanctuary with thickly wooded hills, plateaus, deep valleys, waterfalls, rivers, marshes and streams. The varied flora and topography meet the ecological requirements of several species inhabiting the sanctuary and give the visitors a sense of satisfaction. There are many animals in there. To point out a few, there are many asian elephants, tuskers, deers, Peacocks, Panthers, Lions and Tigers... The one horned Rhinos are also seen at times.</p>
+                </div>
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/Activities/elephanride1.jpg" alt="Image of a safari jeep" class="activity-item-img">
+                    <h3>SAFARI</h3>
+                    <p>We provide both day and night safaris. Day safaris are taken in jeeps or atop tame elephants. Four people and a trained mahout will be carried by our resident gentle giant into the jungle, away from the beaten track, along the road not taken. Because the elephant actually goes through the jungle, chances of seeing game at close quarters are pretty good. Night safaris are taken only in jeeps for wildlife buffs who want to see the animals grazing in the middle of the night or in the wee hours of the mornings for the early risers. Superb setting for videos and pictures for you to remember. The ride usually lasts anywhere between 45 minutes to an hour</p>
+                </div>
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/Activities/Ooty-Waterfalls.jpg" alt="Image of a waterfall" class="activity-item-img">
+                    <h3>WATERFALLS</h3>
+                    <p>Other Local Attractions are the Waterfalls at a place 10 miles away from Masinagudi called "MAYAR". The Singara Power project of the BHEL (Bharat Heavy Electronics Limited) has a very remarkable spot. It has a cable car which is exclusively for workers, but if you are really interested in going for it, you can do so. It will ascend the hill at 90 raw vertical degrees and you really must take care then... Or you must be an Adventure Crazy!!! It is an unforgettable experience! You would also love the scenic tea estates all the way up the hill.</p>
+                </div>
+                <div class="activity-item">
+                    <img src="https://www.newmountania.com/assets/images/Activities/campfire.jpg" alt="Image of a campfire" class="activity-item-img">
+                    <h3>CAMPFIRE</h3>
+                    <p>Campfire facility is available here. Campfire is usually an agreeable (and warm) way to pass the time from dusk to bedtime, particularly for those in a pensive mood.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="scroll-fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Our Location</h4>
+                <p>Masinagudi main road, Masinagudi,<br>Tamil Nadu - 643223</p>
+            </div>
+            <div class="footer-section">
+                <h4>Manager Contact</h4>
+                <p><a href="tel:+919986169988">+91 -9986169988</a></p>
+                <p><a href="tel:+919943216337">+91 -9943216337</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Bangalore Office</h4>
+                <p><a href="tel:+918041678960">080-41678960</a></p>
+                <p><a href="tel:+917406903878">+91 -7406903878</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Email Us</h4>
+                <p><a href="mailto:newmountaniaresort@gmail.com">newmountaniaresort@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the modal, the button that opens it, and the <span> element that closes it
+        const bookingModal = document.getElementById('bookingModal');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const closeButton = document.querySelector('.close-button');
+
+        // When the user clicks the button, open the modal
+        bookNowBtn.onclick = function() {
+            bookingModal.style.display = 'flex';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function() {
+            bookingModal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        }
+
+        // Optional: Handle form submission
+        const bookingForm = bookingModal.querySelector('form');
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const checkIn = document.getElementById('checkInDate').value;
+            const checkOut = document.getElementById('checkOutDate').value;
+            const guests = document.getElementById('numGuests').value;
+            const roomType = document.getElementById('roomType').value;
+
+            alert(`Booking Inquiry Submitted!\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nRoom Type: ${roomType || 'Any'}\n\n(In a real application, this data would be sent to a server.)`);
+
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+
+
+        // JavaScript for Scroll-triggered Fade-in/Slide-up Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.scroll-fade-in');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>
